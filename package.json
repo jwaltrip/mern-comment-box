@@ -1,0 +1,8 @@
+{
+  "name": "mern-comment-box",
+  "version": "1.0.0",
+  "description": "MongoDB Express React NodeJS tutorial",
+  "main": "./backend/server.js",
+  "author": "jwaltrip <jake.waltrip@gmail.com>",
+  "license": "MIT"
+}
