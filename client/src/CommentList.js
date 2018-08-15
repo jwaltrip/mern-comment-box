@@ -18,6 +18,8 @@ const CommentList = (props) => {
 };
 
 CommentList.propTypes = {
+  // data: will be an array of objects formatted like this
+  // { _id: 1, author: 'Bryan', text: 'Wow this is neat', updatedAt: new Date(), createdAt: new Date() }
   data: PropTypes.arrayOf(PropTypes.shape({
     author: PropTypes.string,
     id: PropTypes.string,
