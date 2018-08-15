@@ -16,7 +16,9 @@
     "morgan": "^1.9.0",
     "nodemon": "^1.18.3"
   },
-  "start:server": "cd backend && nodemon server.js --exec babel-node --presets es2015, stage-0",
-  "start:client": "cd client && yarn start",
-  "start:dev": "concurrently \"yarn start:server\" \"yarn start:client\""
+  "scripts": {
+    "start:server": "cd backend && nodemon server.js --exec babel-node --presets es2015, stage-0",
+    "start:client": "cd client && yarn start",
+    "start:dev": "concurrently \"yarn start:server\" \"yarn start:client\""
+  }
 }

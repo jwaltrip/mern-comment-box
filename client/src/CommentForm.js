@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// component that contains the author and comment text fields, and submit button
 const CommentForm = props => (
   <form onSubmit={props.submitComment}>
     <input
@@ -15,7 +16,7 @@ const CommentForm = props => (
       name="text"
       placeholder="Say something..."
       value={props.text}
-      onChange={props.handleTextChange}
+      onChange={props.handleChangeText /* this originally was: props.handleTextChange (i believe this was a typo) */}
     />
     <button type="submit">Submit</button>
   </form>

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 
+// component that contains an individual comment
+// CommentList is comprised of a list of these Comment components
 const Comment = props => (
   <div className="singleComment">
     <img alt="user_image" className="userImage" src={`https://picsum.photos/70?random=${props.id}`} />
