@@ -45,6 +45,31 @@ class CommentBox extends Component {
       });
   };
 
+  onChangeText = (e) => {
+    // begin setting the newState by setting it to current state
+    const newState = { ...this.state };
+    // then we modify the state
+    newState[e.target.name] = e.target.value;
+    this.setState(newState);
+  }
+
+  submitComment = (e) => {
+    e.preventDefault(); // prevent default event from emitting
+    // object destructuring sugar syntax
+    const { author, comment } = this.state;
+    if (!author || !comment) return;
+    fetch('/api/comments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ author, comment }),
+    }).then(res => res.json()).then((res) => {
+      // if error in POST
+      if (!res.success) this.setState({ error: res.error.message || res.error });
+      // if successful POST, then reset form fields to where they are blank
+      else this.setState({ author: '', text: '', error: null });
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -53,7 +78,12 @@ class CommentBox extends Component {
           <CommentList data={this.state.data} />
         </div>
         <div className="form">
-          <CommentForm author={this.state.author} text={this.state.text} />
+          <CommentForm
+            author={this.state.author}
+            text={this.state.text}
+            handleChangeText={this.onChangeText}
+            handleSubmit={this.submitComment}
+          />
         </div>
         {/* if there's an error fetching comments, then display below comment form */}
         {this.state.error && <p>{this.state.error}</p>}
